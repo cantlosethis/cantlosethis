@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convite Misterioso</title>
+    <style>
+        body {
+            background-color: #9370DB; /* Lilás mais escuro */
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            transition: opacity 1s; /* Adiciona uma transição de opacidade */
+        }
+        .content {
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+            text-align: center;
+        }
+        .button {
+            background-color: white; 
+            color: black; 
+            border: 2px solid #9370DB;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .menu {
+            overflow: hidden;
+            background-color: #9370DB;
+            text-align: center; /* Centraliza o menu */
+            display: none; /* Esconde o menu até que a charada seja resolvida */
+        }
+        .menu a {
+            display: inline-block; /* Permite que os itens do menu sejam centralizados */
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        .whatsapp-button {
+            display: none; /* Esconde o botão do WhatsApp até que a charada seja resolvida */
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="#nossos-momentos">Nossos Momentos</a>
+        <a href="#nossas-fotos">Nossas Fotos</a>
+        <a href="#nossos-presentes">Nossos Presentes</a>
+        <a href="https://open.spotify.com/intl-pt/track/2HvuyQEnKR82zwfIuCBaWH?si=5acc0c51fb184f63" target="_blank">Nossas Músicas</a>
+    </div>
+    <div class="content">
+        <h1>Bem-vindo ao Convite Misterioso</h1>
+        <p>Esta é a primeira parte da charada...</p>
+        <button class="button" onclick="nextPage()">Próximo</button>
+    </div>
+
+    <!-- Botão de mensagem do WhatsApp -->
+    <div class="content whatsapp-button">
+        <a href="https://wa.me/5521993584869" target="_blank">
+            <button class="button">Me manda uma mensagem ;)</button>
+        </a>
+    </div>
+
+    <script>
+        var page = 1;
+
+        function nextPage() {
+            document.body.style.opacity = 0; /* Faz o corpo desaparecer */
+            
+            setTimeout(function() { /* Espera um segundo antes de mudar o conteúdo e trazer o corpo de volta */
+                page++;
+                switch(page) {
+                    case 2:
+                        document.querySelector('h1').textContent = 'Segunda Página';
+                        document.querySelector('p').textContent = 'Esta é a segunda parte da charada...';
+                        break;
+                    case 3:
+                        document.querySelector('h1').textContent = 'Terceira Página';
+                        document.querySelector('p').textContent = 'Esta é a terceira e última parte da charada...';
+                        break;
+                    case 4:
+                        document.querySelector('h1').textContent = 'Parabéns!';
+                        document.querySelector('p').textContent = 'Você resolveu a charada! Aqui está o seu convite...';
+                        document.querySelector('.button').style.display = 'none';
+                        document.querySelector('.menu').style.display = 'block'; /* Revela o menu */
+                        document.querySelector('.whatsapp-button').style.display = 'block'; /* Revela o botão do WhatsApp */
+                        break;
+                    default:
+                        break;
+                }
+
+                document.body.style.opacity = 1; /* Traz o corpo de volta */
+                
+            }, 1000);
+            
+        }
+    </script>
+
+</body>
+</html>
